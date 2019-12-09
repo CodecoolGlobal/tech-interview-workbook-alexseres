@@ -19,6 +19,7 @@ Use {} curly brackets to construct the dictionary and [] square brackets to inde
 
 A dictionary maps a set of objects(keys) to another set of objects(value). The keys are unique, so its not ordered, and mutable. Each key-value pair maps the key to its associated value.
 
+"A dictionary consists of a collection of key-value pairs. Each key-value pair maps the key to its associated value."
 ### Algorithms
 
 #### Fibonacci sequences. Write a method (or pseudo code), that generates the Fibonacci sequences.
@@ -117,7 +118,7 @@ Golden rules: A variable should be only accessible where we use that certain var
 
 #### If you need to access the iterator variable after a for loop, how would you do it in Python?
 
-I would create an empty list and I would append with the iterables into it. and You can acces any iterable variable in that list.
+I would create an empty list and I would append with the iterables into it. and You can access any iterable variable in that list.
 #### What type of elements can a list contain in Python?
 A list can contain stirngs, integers, floats, tuples, dictionaries, sets.
 #### What is slice operator in Python and how to use?
@@ -127,6 +128,7 @@ start: starting integer where the slicing of the object starts.
 stop: integer until whoch the slicing takes place.
 stop:integer a value which determines the increment between each index for
 [start: stop: step]
+
 #### What arithmetic operators (+,*,-,/) can be used on lists in Python? What do they do?
 + operator will add two lists together.
 * operator will multiply a list, only integers in list.
@@ -154,7 +156,22 @@ No, it doesnt. all matters is that we declare all functions before we call any o
 
 #### What does unpacking mean in Python?
 
-It unpacks a list, tuple, set or a dictionary. When we unpack them the function will use the elements of the unpacked objects rather then using the object as one. We use * for lists and ** for dictionaries.
+when the length of the data type is very obvious, you can pass in the exact number of variables as the number of values in the data type to unpack values.
+
+e.g.:
+my_info = ["Alex", "Seres", 25, "Budapest"]
+
+name, surname, age, place = my_info
+
+# Result
+>>> name
+'Alex'
+>>> surname
+'Seres'
+>>> age
+25
+>>> place
+'Budapest'
 
 #### What happens when you try to assign the result of a function which has no return statement to a variable in Python?
 
@@ -189,7 +206,7 @@ You can view the changes throughout a project, multiple people are able to work 
 #### What is the difference between the working directory, the staging area and the repository in git?
 Working directory contains the files which are untracked by git. Git doesn't pay attention to these files until you add them to the staging area.
 In the staging area files are tracked, which means that git keeps track of the changes that has happened to that file.
-Repository: Is a file location where you are strong all the file related to your project.
+Repository: Is a file location where you are hold all the file related to your project.
 #### What are remote repositories in git?
 Remote repositories are versions of a project in the cloud, e.g. GitHub.
 
@@ -259,7 +276,7 @@ A root is a user account to perform tasks that require access to all areas of th
 Personal files are in the Home directory,  you can use cd ~. 
 #### How can you install an application in Mac OS X?
 You can install from the App Store. or from the web. 
-#### What is package management in Linux, what are repositories?
+#### What is package management in Mac OS X, what are repositories?
 Package management keeps track of the users' software packages. It updates you about a new version of an installed software is availabe.
 
 Mac OS X can use Homebrew as package manager. but not necceseraly.
