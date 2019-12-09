@@ -148,11 +148,14 @@ strings, tuples, lists, dictionaries
 
 The generator yields one item at a time and generate only when it is used. it hasnt got return statement and it saves the state of the function. List comprehensions reserve memory for a whole list, dicti, etc. Generators are memory efficients.
 
-
 #### Does the order of the function definitions matter in Python? Why?
-No, it doesnt. all matters is that we declare all functions before we call any of them. It only gets executed when we call them. We can make an order as we eant in the main function.
+
+No, it doesnt. all matters is that we declare all functions before we call any of them. It only gets executed when we call them. We can make an order as we put in the main function.
+
 #### What does unpacking mean in Python?
+
 It unpacks a list, tuple, set or a dictionary. When we unpack them the function will use the elements of the unpacked objects rather then using the object as one. We use * for lists and ** for dictionaries.
+
 #### What happens when you try to assign the result of a function which has no return statement to a variable in Python?
 
 the variable's value will be None-type
