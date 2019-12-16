@@ -126,7 +126,7 @@ A list can contain stirngs, integers, floats, tuples, dictionaries, sets.
 Returns the part of string or list  from the n'th character to the m'th character. Creates a slice object representing the set of indices specified by range(start, stop, step).
 start: starting integer where the slicing of the object starts. 
 stop: integer until whoch the slicing takes place.
-stop:integer a value which determines the increment between each index for
+step:integer a value which determines the increment between each index for
 [start: stop: step]
 
 #### What arithmetic operators (+,*,-,/) can be used on lists in Python? What do they do?
@@ -186,7 +186,7 @@ Doctest: defining tests for specific parts in-code.
 Printing: you can print specific variables/lists/ect while running the code to see how they are changing real-time.
 Rubber duck method: explaining the code line by line.
 Debug tool: you can use it to go through the code line by line and track the things you think might cause the error.
-
+linter = analyse source code to flag programming erros, bigs, and suspicious code
 #### What does step over, step into and step out mean while using the debugger?
 
 Step over: an action to take in the debugger that will step over a give file. If the line contains a function, the function will be executed and the result returned without debugging each line.
@@ -247,13 +247,16 @@ When our code runs into a line that it couldn't run, instead of crashing, we han
 We use try and except blocks. The try block catches the exception. If the try cathes an exception it jumps to the except block. We can raise exceptions as well.
 
 #### In which case should we catch an exception? Why?
-We should catch an exception if it would not allow our code to run the way it's supposed to be. We should use it for flow controll, but not for cathching errors in a badly written code.
+
+if you have a suspecious code that may raise exception, you can defend your program by placing the suspecious code in a try block. afte you can put an except statement, followed by a block of code which handles the problem elegantly.
 
 #### What can/should we do with an exception in the ‘except’ block?
 when you think that you have a code which can produce an error or to avoid your program to be crashed.
 #### What does the else and finally statement do in a try-except block in Python?
-the finally clause is always ececuted before the try statementm whether the statement is true or false. 
+
+the finally clause is always ececuted before the try statement whether the statement is true or false. 
 else is executed only if the statements in the try block doesnt raise an exception.
+
 ## Software Development Methodologies
 
 #### What is the main goal of a retrospective meeting?
@@ -265,7 +268,7 @@ This is good to help teams improve their working culture.
 
 #### What is MAC OS X and what is XNU?
 The Mac OS X is the operating system of the Mac and the kernel of is the XNU kernel
-    the kernel is the main component that control everything within OS
+    the kernel is the main component that control everything within OS.
     Mac OS X since 2001 has been derived from UNIX.
 #### What do we call the shell in Mac OS X?
 
@@ -277,7 +280,7 @@ Personal files are in the Home directory,  you can use cd ~.
 #### How can you install an application in Mac OS X?
 You can install from the App Store. or from the web. 
 #### What is package management in Mac OS X, what are repositories?
-Package management keeps track of the users' software packages. It updates you about a new version of an installed software is availabe.
+Package management keeps track of the users' software packages. It updates you about a new version of an installed software is available.
 
 Mac OS X can use Homebrew as package manager. but not necceseraly.
 
