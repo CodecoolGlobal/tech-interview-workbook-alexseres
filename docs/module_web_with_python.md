@@ -5,12 +5,48 @@
 ### Clean code
 
 #### Point out 5 suggestions, how to format an SQL query!
-#### What layers can you name in a simple web application?
+- 1. Avoid giving the same name to both a table and column.
+- 2. Use a new line for each seperate query and to use a new line for each separate column after a comma.
+- 3. incule the AS keyword for creating aliases, becaise this makes the code more readable
+- 4. The name of an obhect in a database for a table or a column should be unique and not too long. Avoid special charactetrs, use only letters, numbers and underscores.
+- 5. If the name of the table or column must consist of more than one word, use an underscore to connect them e. g. :person_age
+
+
+e.g.:
+
+
+SELECT p.person_id,
+       p.first_name,
+       p.last_name,
+       p.name
+  FROM Person AS p 
+ WHERE p.Name = 'New York'
+    OR p.Name = 'Chicago';
+
+
+#### What layers can you name in a simple web application?       /not sure
+    -Presentation tier: os built in HTML5, can be containing CSS(stylesheets) or Javascript. it communicates with other tiers in application program interface(API).
+    -Application tier : can be named as logic tier, is written by a programming language such as Python, and it contains the business logic thats supports the application functions
+    -Data tier: the data tier consists of a database and a program managing read and write access to a database. Can be named as the storage tier, such as PostreQSL
+
+
 
 ### Error handling
-#### What error can occur, when an array does not have an element on the requested index?
+#### What error can occur, when an array does not have an element on the requested index?               // not sure
+-index out of range
+
+
 #### What is the “finally” block, and how would you use it?
-#### Why should we catch special exception types?
+- the finally keyword is used in try..except blocks. It defines a block of code to run when the try...except...else block is final
+-the finally block will be executed no matter if the try block raises an error or not
+-useful to close objects and clean up resources
+
+
+#### Why should we catch special exception types?     //notsure
+- Use exceptions to signal the caller that you faced an error which you are unwilling or unable to handle. 
+
+
+
 
 ### Security
 #### What is SQL injection? How to protect an application against it?

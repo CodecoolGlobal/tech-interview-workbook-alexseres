@@ -116,7 +116,11 @@ Variables have different lifetimes, depending on their definiton. For example a 
 
 Golden rules: A variable should be only accessible where we use that certain variable: Using as much local variables as we can, and using global variables as little as we can.
 
-#### If you need to access the iterator variable after a for loop, how would you do it in Python?
+#### If you need to access the iterator variable after a for loop, how would you do it in Python?§
+list = []
+for iterable in something:
+    list.append(iterable)
+print(list)
 
 I would create an empty list and I would append with the iterables into it. and You can access any iterable variable in that list.
 #### What type of elements can a list contain in Python?
@@ -187,6 +191,7 @@ Printing: you can print specific variables/lists/ect while running the code to s
 Rubber duck method: explaining the code line by line.
 Debug tool: you can use it to go through the code line by line and track the things you think might cause the error.
 linter = analyse source code to flag programming erros, bigs, and suspicious code
+
 #### What does step over, step into and step out mean while using the debugger?
 
 Step over: an action to take in the debugger that will step over a give file. If the line contains a function, the function will be executed and the result returned without debugging each line.
