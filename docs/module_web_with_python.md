@@ -43,15 +43,32 @@ SELECT p.person_id,
 
 
 #### Why should we catch special exception types?     //notsure
-- Use exceptions to signal the caller that you faced an error which you are unwilling or unable to handle. 
-
+- Use exceptions to signal the caller that you faced an error which you are unwilling or unable to handle. SQL injections attacks allow attackers to steal, modify, delete data informations.  
 
 
 
 ### Security
 #### What is SQL injection? How to protect an application against it?
+- is an attack in data-driven applications, which malicious SQL statements are inserted into an entry field field for execution
+-Prevention:
+    -parameterized queries are a menas of pre-compliling a SQL statement so that you can then supply the parameters in order for the statement to be executed. This method makes it posiible for the database to recognise the code and distingush it from input data. 
+    - use command parameters: they are defined by adding placeholder names in SQL commands, which will be later replaced by user input. ASP.NET has a very intuitive and easy-to-use set of APIs for this purpose. 
+    -use stored procedures: stored procedures are frequent SQL operations that are stored on the database itself, varying only with their arguments. Stored procedures make it much more difficult for attackers to execute their malicioius SQL, as it is unable to be dynamically inserted within queries
+    -use a web application firewall: you can protect against generic SQL injections with a web application by firewall. By filtering potentially dangeruous web requests, web application firewalls can catch and prevent SQL injections
+
+
+
+
 #### What is XSS? How to protect an application against it?
+-Cross-site Scripting(XSS) is a web security vulnerabilitu that allows an attacker to compromise the interactions that users have with vulnerable application. It allows an attacker to find the same origin policy, which is designed to segregate different websites from each other .
+
+-Prevention: 
+    -escaping user input: taking the data an application has received and ensuring its secure before rendering it for the end user. By escaping iuser input, key characters in the data received by a web page will be prevented from being interpreted in any malicious way. 
+    - validation input: is the process pf ensuring an applicaton is rendering the correct data and preventing malicious data frpm doing harm to the site, database, users. 
+    -sanitize user input: is allow HTML markup, to ensure data received can do no harm to users as well as your database by scruibbing the date clean of potentially harmful markup, changing unacceptable user input to an acceptable format.
+
 #### How to properly store passwords?
+    - encrypte the password and hash it before we store it.
 #### What is HTTPS?
 #### What is encryption and decryption?
 #### What is hashing?
