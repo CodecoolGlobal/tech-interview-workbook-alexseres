@@ -33,7 +33,7 @@ SELECT p.person_id,
 
 ### Error handling
 #### What error can occur, when an array does not have an element on the requested index?               // not sure
--index out of range
+-indexError
 
 
 #### What is the “finally” block, and how would you use it?
@@ -68,20 +68,35 @@ SELECT p.person_id,
     -sanitize user input: is allow HTML markup, to ensure data received can do no harm to users as well as your database by scruibbing the date clean of potentially harmful markup, changing unacceptable user input to an acceptable format.
 
 #### How to properly store passwords?
-    - encrypte the password and hash it before we store it.
+- hash and salt it on the server. 
 #### What is HTTPS?
+-Hypertext transfre protocol secure(HTTPS) is the sercure version of HTTP, which is the primary protocol used to send data between a web browser and a website. HTTPS is encrypted in order to increase security of data transfer. THis is particularly important when users transmit sensitive data, such as by logging into a back account.
 #### What is encryption and decryption?
+-encryption: a text gets encoded into an unreadable text.
+decryption: Transforming the unreadable text into readable format again. 
 #### What is hashing?
+in one way, a process where text gets converted into ficed length fignerprint. Hash is a secure way to store data to not be able to be stolen.
 #### What is the difference between encryption and hashing? When would you use which?
+Hashing is one way only, while encrzption has two way. Encryption can be reversed, hashed data cannot.
 #### What encryption methods do you know?
+AES: Advanced Encryption Standard, it is a symmetric encryption algorithm that encrypts fixed blocks of data (of 128bits) at a time. The keys used to decipher the text can be 128, 192 256 bit long. 
+
+RSA, is a public-key encryption algorithm and the standard data sent over the internet.
+
 #### What hashing methods do you know?
+MD5: 128 bit. not the savest
+SHA256: generates an almost-unique, fixed size 256 bit (32-byte) hash. very safe.
+
 #### How/where would you store sensitive data (like db password, API key, ...) of your application?
+I would put data like password, or API key in my environment variables. It is very hard to steal 
+
 
 ## Computer science
 
 ### Algorithms
 
 #### What is the difference between Stack and Queue data structure?
+a
 #### What is BubbleSort? Describe the main logic of this sorting algorithm.
 #### Explain the process of finding the maximum and minimum value in a list of numbers!
 #### Explain the process of calculating the average value in an array of numbers!
