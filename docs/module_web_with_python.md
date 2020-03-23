@@ -96,51 +96,289 @@ I would put data like password, or API key in my environment variables. It is ve
 ### Algorithms
 
 #### What is the difference between Stack and Queue data structure?
-a
-#### What is BubbleSort? Describe the main logic of this sorting algorithm.
-#### Explain the process of finding the maximum and minimum value in a list of numbers!
-#### Explain the process of calculating the average value in an array of numbers!
-#### What is Big O complexity? Explain time and space complexity!
-#### Explain the process of calculating the average value in a linked list of numbers!
+Stack follows the LIFO principle: Last In First Out, push;pop<br>
+- Programs runs like this most of the time.
 
+Queue follows the first in first out principle. enqueue;dequeue
+- Login queues work like this.
+#### What is BubbleSort? Describe the main logic of this sorting algorithm.
+BubbleSort loops through a list multiple times (1 loop for the list, 1 for the elements).
+This sort compares 2 elements and if they're not in the correct order it swaps the 2 elements.
+The highest element will "bubble" its way to the end of the list, hence the name.
+```python
+def bubblesort(lst):
+    iterations = 1
+    N = len(lst)
+    while iterations < N:
+        j = 0
+        while j <= N-2:
+            if lst[j] > lst[j+1]:
+                temp = lst[j+1]
+                lst[j+1] = lst[j]
+                lst[j] = temp
+            j += 1
+        iterations += 1
+    return lst
+```
+#### Explain the process of finding the maximum and minimum value in a list of numbers!
+You declare the first number of the list to be the smallest number and you loop through the list.<br>
+If the loop finds an element that is smaller than our declared variable it reassigns
+that number to the variable.
+```python
+def _min(_list):
+    smallest_value = _list[0]
+    for element in _list:
+        if smallest_value > element:
+            smallest_value = element
+    return smallest_value
+```
+
+Maximum:
+You declare the first element of the list to be the biggest number and you loop through the list.
+If if the loop finds an element that is bigger than our variable it reassigns the variable to that number.
+```python
+def _max(_list):
+    biggest_value = _list[0]
+    for element in _list:
+        if biggest_value < element:
+            biggest_value = element
+
+    return biggest_value
+```
+#### Explain the process of calculating the average value in an array of numbers!
+```python
+def my_avg(_list):
+    my_sum = 0
+    element_number = 0
+    for element in _list:
+        my_sum += element
+        element_number += 1
+    average = my_sum / element_number
+
+    return average
+```
+It loops through a list, adds every element to the sum, and adds one to the element_number after
+each iteration. This way if you divide the sum with the number of iterations you get the average.
+#### What is Big O complexity? Explain time and space complexity!
+It is the relation between runtime and input size.
+```python
+def _length(_list):
+    list_length = 0
+    for _ in _list:
+        list_length += 1
+    return list_length
+# O(n) complexity
+```
+Space complexity:<br>
+This is the amount of memory used in the algorithm. The more elements the more memory usage.
+#### Explain the process of calculating the average value in a linked list of numbers!
+Linked lists are linear collection of data elements, where every node has a value and a pointer to the next node, so
+order is not determined by the physical placement in the memory
+- Create a length and sum variable
+- Iterate through the list incrementing the length and adding the current node's value to the sum<br>
+- return sum/length
 ### Procedural
 #### How the CASE condition works in SQL?
+The CASE statement is similar to an if/else statement.
+It goes through the selected columns, if the WHEN condition is true then the THEN statement replaces
+the value of that cell.
+You can also use ELSE in the CASE statement that works the same way as typical if/else statement.
+```postgresql
+SELECT name, age,
+CASE
+    WHEN age < 18 THEN
+        "Can't drink legally"
+    WHEN age > 70 THEN
+        "Shouldn't drink"
+    ELSE 
+        "Can drink legally"
+END
+FROM people;
+```
 #### How the switch-case condition works in JavaScript?
-#### How to achieve a switch-case-like structure in Python?
-#### Explain variable scoping in Python!
-#### What’s the difference between const and var in JavaScript?
-#### How the list comprehension looks like in Python?
-#### How the “ternary expression” looks like in Python?
-#### How the ternary expression looks like in JavaScript?
-#### How to import a function from another module in Python?
-#### How to import a function from another module in JavaScript?
+The expression in the switch argument gets executed and its value is checked against cases.
+If the case matches a value it starts executing and we need to break out of it in order to stop
+We can use a default value in the end which gets executed it no cases were matched.
+```javascript
+switch(expression){ // This expression will be checked against the values
+    case value:     // If the value matches the expression value it starts executing
+        expression;
+        break;      // We need to break it, so it won't execute anything else
 
+    case value:
+        expression;
+        break;
+
+    default:        // If no case matches this block gets executed
+        Expression;
+                    // No need to break since it's the end of the block
+}
+```
+#### How to achieve a switch-case-like structure in Python?
+With if else and elif.
+```python
+fruit = 'banana'
+
+if fruit == 'orange':
+    print('This is an orange')
+elif fruit == 'banana':
+    print('This is a banana')
+elif fruit == 'apple':
+    print('This is an apple')
+else: #This would be the default in Javascript
+    print('Some other fruit')
+```
+#### Explain variable scoping in Python!
+LEGB: Local, Enclosed, Global, Built-in
+Scope determines the accessibility of our variables, and what values do they hold.
+It is the hierarchy in which python looks for variables (and functions as well).
+Variables have different lifetimes, depending on their definition. For example a local variable exists only within
+the function, and when that function's execution is finished it does not exist anymore.
+#### What’s the difference between const and var in JavaScript?
+const creates a block scope variable, so it can be only accessed in the block that it was declared in and its value
+can not be changed.
+var creates a global scope (or function scope) variable.
+let creates a block scope variable same as const, but its value can be changed.
+#### How the list comprehension looks like in Python?
+numbers = [number for number in range(1, 11)] # Creates a list with numbers from 1 to 10
+#### How the “ternary expression” looks like in Python?
+I think python's if-else statements are pretty simple and ternary expressions look a bit weird here compared to
+other languages.
+So I would stick with the normal if-else statement.
+```python
+number = 3
+return_value = 'Number is 3.' if number==3 else 'Number is not 3.'
+```
+#### How the ternary expression looks like in JavaScript?
+condition ? expressionIfTrue : expressionIfFalse
+```javascript
+let number = 3;
+let returnValue = (number===3) ? 'Number is 3.' : 'Number is not 3.';
+console.log(returnValue);
+```
+#### How to import a function from another module in Python?
+import /origin/my_module without the .py part. If the file is in the same directory it is not
+necessary to provide the origin.
+So either:
+import module
+or
+from module import function
+#### How to import a function from another module in JavaScript?
+If we use more functions we need the curly brackets.
+import {function1, function2} from module
+or
+import module
+These are the ones I use but there are 9 other ways if your taste requires something else.
 ### Functional
 #### What is recursion?
+A function calling itself.
 #### Write a recursive function which calculates the Fibonacci numbers!
+def fibonacci(seq_index):
+    if seq_index <= 1:
+        return seq_index
+    else:
+        return fibonacci(seq_index - 1) + fibonacci(seq_index - 2)
 #### How to store a function in a variable in Python?
+When you assign a function to a variable you don't use the () but simply the name of the function.
+In your case given def x(): ..., and variable silly_var you would do something like this:
+silly_var = x
+and then you can call the function either with
+x()
+or
+silly_var()
 #### List the ways of defining a callable logical unit in JavaScript!
-#### What is an event listener? How to attach one?
-#### How to trigger an event in JavaScript?
-#### What is a callback function? Tell some examples of its usage.
-#### What is a Python decorator? How does it work? Tell some examples of its usage.
-#### What is the difference between synchronous and asynchronous execution?
+function one() {
+    return 'one';
+}
 
+const two = function() {
+    return 'two';
+}
+
+const three =  () => 'three';
+
+const four = singleParameter => singleParameter+'four';
+
+const five = (number1, number2) => {
+    let result = number1 + number2;
+    return result; // It's dumb but it wants to show that you have to use {} for multiline arrow function
+}
+
+
+six: function () {
+  return 'six';
+}
+#### What is an event listener? How to attach one?
+An even listener watches for our defined event to occur at a given DOM object. The event handler function is called when the event is triggered.
+
+const buttonOne = querySelector('#btn1');
+buttonOne.addEventListener('click', function() {
+  buttonOne.remove();
+})
+#### How to trigger an event in JavaScript?
+We either listen for the predefined user interaction or we wait for events that occur by deafult.
+For example: windows.onload or mouseover 
+#### What is a callback function? Tell some examples of its usage.
+A callback function is a function that is passed into another function as argument, which
+is then called, hence its name.
+- Event listeners
+- Asynchronous calls
+#### What is a Python decorator? How does it work? Tell some examples of its usage.
+Decorators are functions that extend other functions, they basically wrap around the
+original function.
+- On databases.py-s extending a connection handler
+- In flask on routes.
+#### What is the difference between synchronous and asynchronous execution?
+Synchronous execution happens line-by line in order, while in asynchronous execution one thread
+can execute other lines of code while the other thread waits for the data to load.
 ## Programming languages
 
 ### SQL
 
 #### How can you connect your application to a database server? What are the possible ways?
+With a database adapter, in our case python's psycopg2.
 #### When do you use the DISTINCT keyword in SQL?
+DISTINCT statement is used to return only distinct (different) values
 #### What are aggregate functions in SQL? Give 3 examples.
+Instead of returning every value, with this function you can return a single value COUNT, AVG, MAX 
 #### What kind of JOIN types do you know in SQL? Could you give examples?
+LEFT JOIN: Represents every value from the table after the FROM even if it has null value.
+RIGHT JOIN: Represents every value from the table after the JOIN even if it has a null value.
+FULL JOIN: Represents everything from every table even if the values are null
+INNER JOIN: Represents only the values on which it can join together two tables ON a given clause.
+No null values!
+
 #### What are the constraints in sql?
+Constraints are the rules enforced on the data columns of a table. These are used to limit the type of data that can go into a table. e. g.: Primary KEY, UNIQUE
 #### What is a cursor in SQL? Why would you use one?
+It is a database object is used to retrieve, store information from the database and to manipulate this data.
+
 #### What are database indexes? When to use?
-#### What are database transactions? When to use?
-#### What kind of database relations do you know? How to define them?
+Indexes are special lookup tables that the database search engine can use to speed up data retrieval. Simply put, an index is a pointer to data in a table. An index in a database is very similar to an index in the back of a book.
+#### What are database transactions? When to use?     *
+A transaction represents a change in the database and they are generally used with DML commands.
+It is usually used to catch an error, and in that case the transaction is aborted and it rolls back the changes.
+If the transaction doesn't catch an error it is saved to the database(commit). Transactions work independently to each other.
+#### What kind of database relations do you know? How to define them!
+One to One: Each table contain one primary key of the relation.
+For example:
+In the students table every student has one student_id and in the addresses table one address has one student_id,
+One to Many: A table has a record that relates to many records in the other table.
+For example:
+In the teachers table one teacher has one teacher_id but in the classes table more classes can have the same teacher_id.
+Many to Many: In both tables any record can relate to any record in the other table.
+For example:
+In the classes table one class can have many students and in the students table one student can have many classes
+I consider this solution messy, so I like to break many-to-many relations into One-to-Many relations with an Intermediary junction table.
 #### You have a table with an “address” field which contains data like “3525, Miskolc, Régiposta 9.” (postcode, city, street name and address). How would you query all records related to Miskolc?
+SELECT address
+FROM table
+WHERE address LIKE "%Miskolc%"
 #### How would you keep track of what kind of data has changed after an UPDATE or DELETE operation in a table?
+Adding the records of the changes to another table.
+So first I'd insert my record of a deletion/update to the new table then I'd alter/delete the row.<br>
+Or I'd insert the returning into Clause to a new table. You can also create a a trigger for this, and save the
+record to the new table.
 
 ### HTML & CSS
 
