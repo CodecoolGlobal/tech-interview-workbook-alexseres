@@ -383,18 +383,56 @@ record to the new table.
 ### HTML & CSS
 
 #### What’s the difference between XML, XHTML and HTML?
-#### How to include a JavaScript file in a webpage?
-#### How to include a CSS file in a webpage?
-#### How to select an element using its id in CSS?
-#### How to select elements using their class in CSS?
-#### How to select elements which have the ‘alpha’ and ‘beta’ classes in CSS?
-#### How to select all list items in all ordered lists on the page in CSS?
-#### How to select elements using their attributes in CSS?
-#### What are UX and UI?
-#### Please list some points that an application should fulfill to have good UX.
-#### What is XML, XSLT, DTD?
-#### What is the difference between HTML and XML?
+HTML : is the HyperText Markup language, which is designed to create structured documents and provide for semantic meaning behind the documents(the skeleton of the website)
 
+XML : is the Extensible Markup Language which provides rules for storing, creating, structuring and encoding documents
+
+XHTML : is an XML-based HTML. it serves the same function as HTML, but with the same functionas XML documents
+#### How to include a JavaScript file in a webpage?
+We can use script tage in HTML with src attribute :
+<script src="script.js" type="text/javascript" defer></script>
+#### How to include a CSS file in a webpage?
+
+If we are talking about External files, we just have to put link tag with href atrribute and type attribute like that : <link href="myCSSfile.css" rel="stylesheet" type="text/css">
+#### How to select an element using its id in CSS?
+Gotta put hashtag
+#id{
+    backgroundcolor: red;
+}
+#### How to select elements using their class in CSS?
+Gotta put full-stop
+.class{
+    backgroundcolor: green;
+}
+#### How to select elements which have the ‘alpha’ and ‘beta’ classes in CSS?
+.alpha.beta {
+    backgroundcolor: purple;
+}
+#### How to select all list items in all ordered lists on the page in CSS?
+ol li {
+    backgroundcolor: yellow;
+}
+#### How to select elements using their attributes in CSS?
+smt[target]{
+    color:green;
+}
+#### What are UX and UI?
+UI: User Interface. Graphical layout of the of the page/application, It is basically the graphic design.
+UX: User eXperience. It is about the user interaction with the application/page. 
+"If you imagine a product as the human body, the bones represent the code which give it structure. The organs represent the UX design: measuring and optimizing against input for supporting life functions. And UI design represents the cosmetics of the body; its presentation, its senses and reactions"
+#### Please list some points that an application should fulfill to have good UX.
+- Understandable: You know how to navigate on the site immediately.
+- Responsive: Either on mobile or on PC the experience is nearly the same.
+- Smoothness: The app doesn't require 5G to load in a minute.
+#### What is XML, XSLT, DTD?
+XML is eXtensible Markup Language used for storing data.
+XSLT is ((eXtensible Stylesheet Language) Transformation) used for styling XML.
+DTD is Document Type Definition used for defining the structure and attributes of XML.
+#### What is the difference between HTML and XML?
+There are many.
+1.HTML is used to display data, XML is used to store, transport
+2.HTML is a markup language,XML provides framework to define markup language
+3.HTML is not necceseray to use closing tags, in XML is mandatory
 ### Javascript
 
 #### What is javascript?
