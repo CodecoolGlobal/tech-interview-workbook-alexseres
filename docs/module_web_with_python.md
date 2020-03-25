@@ -436,10 +436,16 @@ There are many.
 ### Javascript
 
 #### What is javascript?
+JavaScript is a scripting programming language for the Web. JS can update, and change both HTML and CSS. JS can calculate, namipulate and validate data. Can be backend and frontend.
 #### When to use AJAX? Bring examples of its usage.
+AJAX stands for Asynchronous Javascript and XML. The most valuable feaute of AJAX is allow to refresh, update datathe webpage without reloading.
 #### What is DOM and how to manipulate it from Javascript?
+It stands for Document Object Model. With DOM, Js can access and change all the elements of the HTML content. Each branch is a node and these nodes contain objects. For example you can access and manipulate html element : document.getElementById("demo").innerHTML = "Hello World!";
 #### What are events and how/why to use them in Javascript?
+HTML events are the 'things' that happen HTML elements.
+When JS is used HTML pages, JS can react on these events. User interacton e.g.: click, hover, keydown, etc. You can attach eventlisteners where you want to wair, and you can make a function on is
 #### What is event bubbling/capturing? How would you use it?
+
 #### What is JSON and how do we use it?
 
 ## Software engineering
