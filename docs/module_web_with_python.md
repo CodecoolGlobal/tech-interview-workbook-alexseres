@@ -445,41 +445,127 @@ It stands for Document Object Model. With DOM, Js can access and change all the 
 HTML events are the 'things' that happen HTML elements.
 When JS is used HTML pages, JS can react on these events. User interacton e.g.: click, hover, keydown, etc. You can attach eventlisteners where you want to wair, and you can make a function on is
 #### What is event bubbling/capturing? How would you use it?
+Event bubbling is when an aevent happens on an element, it first runs the handlers on it, then on its parent, then all the way up on the other ancestors.Use: <form onclick="alert('form')">FORM
+                        <div onclick="alert('div')">DIV
+                            <p onclick="alert('p')">P</p>
+                        </div>
+                    </form>
 
+
+click on the inner <p> first runs onclick: on that<p>, then on the outer <div>, then the outer <form>, and so on
+
+
+Event capturing is the event starts from top element to the target elements. It is the opposite of event bubbling, which starts from target element to the top element.
 #### What is JSON and how do we use it?
-
+JSON stands for JavaScript Object.It is a lightweight format for storing and transporting data. It is used when date is sent from a server to a webpage or reverse.
+example : {
+   "book": [
+	
+      {
+         "id":"01",
+         "language": "Java",
+         "edition": "third",
+         "author": "Herbert Schildt"
+      },
+	
+      {
+         "id":"07",
+         "language": "C++",
+         "edition": "second",
+         "author": "E.Balagurusamy"
+      }
+   ]
+}
 ## Software engineering
 
 ### Version control
 
 #### What type of branching strategy would you use?
+My live code would be on the master branch, and my development would be on the development branch.
+Each feature would have its own branch from development, and merged back to it when it's finished.
+Before merging back to the branch I'd pull the branch which it was originated from to resolve the merge conflict there.
+When i would like to bring the development code live I would review it, open a pull request, review it
+with others, change my code according to the feedback, and merge the code to master.
 #### What would you do if you find a bug on the production code (master branch)?
+Create aother branch to solve that specific bug.
 #### How can you move changes from one branch to another in GIT?
+Cherry pick for one commit, rebase for more, merge for the entire.
 #### How does a VCS help with code reviews?
+Every little change can be seen with an exact history.
+You can also see who wrote specific changes to the code.
 #### What is your favorite git command? Why?
+git status: it shows what files have to be committed, and which while is added to the stage area.
 #### What does remote/local mean in Git? 
-
+Local is in your computer, remote is on the web.
 ### DevOps
 
 #### Why is it good to use a package manager software?
+It is a convenient way to get updates for you existing packages, and to get new ones.
+You don't have to google through everything.
 #### Why is it good to use a virtual environment for a project?
-
+It helps you to keep your code functional if something changes. For example a tool gets updated
+and suddenly your code crashes, but with virtual environment your versions can stay the same.
 ### Networks
 
 #### What kind of HTTP status codes do you know?
-#### What is a API?
-#### What is REST API?
-#### What is JSON? When to use?
-#### What is TCP/IP? What layers does it define, what are they responsible for?
-#### What’s the difference between TCP and UDP?
-#### How does an HTTP Request look like? What are the most relevant HTTP header fields?
-#### How does an HTTP Response look like? What are the most relevant HTTP header fields?
-#### What is DNS? How does it work?
-#### What is a web server?
-#### Explain the client-server architecture.
-#### What would you use a session for?
-#### What would you use a cookie for?
+2xx for Success, 3xx for Redirection, 4xx for Failures, 5xx server errors.
+202 accepted: the request is complete and a new resource is created
+303 see other: the requested has moved temporarilay to a new url
+404 Not Found: the server cannot find the requested page
+505 HTTP Version Not Supported: the server does not support the 'http protocal' version
 
+#### What is a API?
+Application Programming Interface. It is the gateway that allows your code to communicate with other code/site.
+You can imagine it like the backend is the kitchen, the food on the table is the frontend and the waiter is the API.
+#### What is REST API?
+REST API stands for Representational State Transfer Application Programming Interface.
+REST determines how the API looks like. It is a set of rules that developers follow when they create their API. One of these rules states that you should be able to get a piece of data (called resource) when you link to a specific URL
+#### What is JSON? When to use?
+JSON stands for JavaScript Object Notation. 
+The JSON format is syntactically identical to the code for creating JavaScript objects. JS program can easily convert JSON data into native JS objects, it consist a key value pairs. We use it the store and transport data,from server to webpage.
+#### What is TCP/IP? What layers does it define, what are they responsible for?
+TCP/IP (Transmission Control Protocol/Internet Protocol) is a set of protocols, that are used for data transmission over computer networks. 
+It is a set of communication rules that defines how data should be transferred.(packeting, addressing, transferring, routing, receiving)
+It.contains four layers :1. Process/Application Layer(HTTP, Browser), 2. Host-to-Host/Transport Layer(TCP, it packets the data with headers), 3. Internet Layer(IP, it knows where it comes from and where it goes), 4. Network Access/ Link Layer(receives and converts the data)
+#### What’s the difference between TCP and UDP?
+-TCP is a connection-roiented protocol, whereares UDP is a connectionless protocol
+-The speed for TCP is slower while the speed of UDP is faster
+-TCP uses handshake protocol like SYN, SYN-ACK, ACK while UDP uses no handshake protocols
+-TCP does error checking and also makes error recovery, on the other hand,
+UDP performs error checking, but it discards erroneous packets.
+-TCP has acknowledgement segments, but UDP does not have any acknowledgement segment
+-TCP is heavy-weight and UDP is lightweight
+#### How does an HTTP Request look like? What are the most relevant HTTP header fields?
+Headers:
+- host: domain
+- method: GET, POST, DELETE, etc
+- path: url path /feed
+- cookies: user session etc
+- user agent: browser, os
+- content type: body's content type
+#### How does an HTTP Response look like? What are the most relevant HTTP header fields?
+Headers:
+
+- Content-type
+- Status code
+
+Body:
+- The site you receive
+#### What is DNS? How does it work?
+DNS stands for Domain Name System.
+DNS translates the domain name into an IP address to connect to the server. It kind of works like a phone book.
+
+#### What is a web server?
+A web server is used for hosting websites. It usually runs on a dedicated hardware which stores data about the web page.
+This can handle incoming requests and respond to them.
+#### Explain the client-server architecture.
+In this architecture a server can handle many connecting clients over a network. The server contains the data about the page.
+They communicate through requests and responses. A request is made by the client, the server processes that request
+(eg: Which page is to be loaded? Which cookies did you send?) and then it sends a response.
+#### What would you use a session for?
+I'd store login data with this. Is the user logged in or not.
+#### What would you use a cookie for?
+1. Personalised ads. Other: Saving forms, saving the state of the basket (any useful information that is not sensitive).
 ## Software Development Methodologies
 
 #### What kind of software development methodologies do you know? What are the main features of these?
