@@ -569,8 +569,33 @@ I'd store login data with this. Is the user logged in or not.
 ## Software Development Methodologies
 
 #### What kind of software development methodologies do you know? What are the main features of these?
+Waterfall methodology:The waterfall model emphasizes that a logical progression of steps be taken throughout the software development life cycle (SDLC), much like the cascading steps down an incremental waterfall. While the popularity of the waterfall model has waned over recent years in favor of more agile methodologies, the logical nature of the sequential process used in the waterfall method cannot be denied, and it remains a common design process in the industry.
+
+Agile:It has a time boxed iterative approach to development. Analysis, design, etc.. are done contemporary.
+It builds the software in small blocks instead of delivering
+one huge block of software in the end. Because of this the software can be changed cost effectively throughout the
+project. It is a good practice for codes where the requirements are not 100% clean at the start and where the codebase
+needs to change during the development. Good for projects like a website.
 #### What are the SCRUM roles?
+- Product owner (PO)
+- Scrum master
+- Developer team
 #### What are the SCRUM ceremonies?
+- Sprint planning
+- Daily stand ups
+- Sprint review
+- Retrospective meetin
+
 #### What are the SCRUM artifacts?
+- Product backlog: never ending<br>
+- Sprint backlog: what the team thinks can be done in a sprint<br>
+- Increment: All completed backlogs from the current sprint combined with the previous sprint's backlog.<br>
+- Burn-Down Chart: An overview graph that can assume the team's and project's velocity. 
 #### What is the main goal of a retrospective meeting?
+A meeting that reflects the previous sprint. Discussing the positive and negative elements of the sprint.
+Making an action item, that can be implemented in the next sprint. It needs to be Specific, Measurable, Action-oriented,
+Realistic, ).
 #### Explain, when would you recommend to use the waterfall methodology?
+When the requirements are clean and you can't really fix the software afterwards.
+Most cars' system are designed this way. You can't really roll an update to the tempomat in a car.
+...
