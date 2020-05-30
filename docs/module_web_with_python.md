@@ -43,12 +43,13 @@ SELECT p.person_id,
 
 
 #### Why should we catch special exception types?     //notsure
-- Use exceptions to signal the caller that you faced an error which you are unwilling or unable to handle. SQL injections attacks allow attackers to steal, modify, delete data informations.  
+- Use exceptions to signal the caller that you faced an error which you are unwilling or unable to handle.
 
 
 
 ### Security
 #### What is SQL injection? How to protect an application against it?
+SQL injections attacks allow attackers to steal, modify, delete data informations.  
 - is an attack in data-driven applications, which malicious SQL statements are inserted into an entry field field for execution
 -Prevention:
     -parameterized queries are a menas of pre-compliling a SQL statement so that you can then supply the parameters in order for the statement to be executed. This method makes it posiible for the database to recognise the code and distingush it from input data. 
@@ -279,23 +280,19 @@ def fibonacci(seq_index):
     else:
         return fibonacci(seq_index - 1) + fibonacci(seq_index - 2)
 #### How to store a function in a variable in Python?
-When you assign a function to a variable you don't use the () but simply the name of the function.
-In your case given def x(): ..., and variable silly_var you would do something like this:
-silly_var = x
-and then you can call the function either with
-x()
-or
-silly_var()
+You simply dont call the function and dont use ()brackets, just simply the name of the function
+def x():
+    print(20)
+ y = x
+ y() ---> output: 20   
 #### List the ways of defining a callable logical unit in JavaScript!
 function one() {
     return 'one';
 }
-
-const two = function() {
+const two = function() { //function expression
     return 'two';
 }
-
-const three =  () => 'three';
+const three =  () => 'three';  //lambda expression
 
 const four = singleParameter => singleParameter+'four';
 
@@ -304,25 +301,26 @@ const five = (number1, number2) => {
     return result; // It's dumb but it wants to show that you have to use {} for multiline arrow function
 }
 
-
 six: function () {
   return 'six';
 }
 #### What is an event listener? How to attach one?
 An even listener watches for our defined event to occur at a given DOM object. The event handler function is called when the event is triggered.
-
 const buttonOne = querySelector('#btn1');
 buttonOne.addEventListener('click', function() {
   buttonOne.remove();
 })
 #### How to trigger an event in JavaScript?
+
 We either listen for the predefined user interaction or we wait for events that occur by deafult.
 For example: windows.onload or mouseover 
+
 #### What is a callback function? Tell some examples of its usage.
 A callback function is a function that is passed into another function as argument, which
 is then called, hence its name.
 - Event listeners
 - Asynchronous calls
+
 #### What is a Python decorator? How does it work? Tell some examples of its usage.
 Decorators are functions that extend other functions, they basically wrap around the
 original function.
@@ -342,19 +340,25 @@ DISTINCT statement is used to return only distinct (different) values
 #### What are aggregate functions in SQL? Give 3 examples.
 Instead of returning every value, with this function you can return a single value COUNT, AVG, MAX 
 #### What kind of JOIN types do you know in SQL? Could you give examples?
-LEFT JOIN: Represents every value from the table after the FROM even if it has null value.
-RIGHT JOIN: Represents every value from the table after the JOIN even if it has a null value.
-FULL JOIN: Represents everything from every table even if the values are null
-INNER JOIN: Represents only the values on which it can join together two tables ON a given clause.
-No null values!
+LEFT JOIN: Returns all of the records from the left table, and the matched records from the right
+RIGHT JOIN:returns all records from the right table, and the matched recors from the left table
+FULL JOIN: returns all recrods when there is a match in either left or right table
+INNER JOIN:  returns records that have matching values in both tables
 
 #### What are the constraints in sql?
-Constraints are the rules enforced on the data columns of a table. These are used to limit the type of data that can go into a table. e. g.: Primary KEY, UNIQUE
+Constraints are the rules enforced on the data columns of a table. These are used to limit the type of data that can go into a table. e. g.: Primary KEY(a combination of a not null and UNIQUE. Uniquely identifies each row in the table),Foreign KEY(Uniquely indifies a row/records in another table), UNIQUE(Ensures that all values in a column different)
+
 #### What is a cursor in SQL? Why would you use one?
 It is a database object is used to retrieve, store information from the database and to manipulate this data.
 
 #### What are database indexes? When to use?
 Indexes are special lookup tables that the database search engine can use to speed up data retrieval. Simply put, an index is a pointer to data in a table. An index in a database is very similar to an index in the back of a book.
+
+"Consider a "Book" of 1000 pages, divided by 10 Chapters, each section with 100 pages.
+
+Simple, huh?
+
+Now, imagine you want to find a particular Chapter that contains a word "Alchemist". Without an index page, you have no other option than scanning through the entire book/Chapters. i.e: 1000 pages."
 #### What are database transactions? When to use?     *
 A transaction represents a change in the database and they are generally used with DML commands.
 It is usually used to catch an error, and in that case the transaction is aborted and it rolls back the changes.
@@ -369,17 +373,13 @@ In the teachers table one teacher has one teacher_id but in the classes table mo
 Many to Many: In both tables any record can relate to any record in the other table.
 For example:
 In the classes table one class can have many students and in the students table one student can have many classes
-I consider this solution messy, so I like to break many-to-many relations into One-to-Many relations with an Intermediary junction table.
+
 #### You have a table with an “address” field which contains data like “3525, Miskolc, Régiposta 9.” (postcode, city, street name and address). How would you query all records related to Miskolc?
 SELECT address
 FROM table
 WHERE address LIKE "%Miskolc%"
 #### How would you keep track of what kind of data has changed after an UPDATE or DELETE operation in a table?
-Adding the records of the changes to another table.
-So first I'd insert my record of a deletion/update to the new table then I'd alter/delete the row.<br>
-Or I'd insert the returning into Clause to a new table. You can also create a a trigger for this, and save the
-record to the new table.
-
+A foreign key with cascade delete means that if a record in the parent table is deleted, then the corresponding records in the child table will automatically be deleted. This is called a cascade delete in SQL Server
 ### HTML & CSS
 
 #### What’s the difference between XML, XHTML and HTML?
@@ -440,14 +440,14 @@ JavaScript is a scripting programming language for the Web. JS can update, and c
 #### When to use AJAX? Bring examples of its usage.
 AJAX stands for Asynchronous Javascript and XML. The most valuable feaute of AJAX is allow to refresh, update datathe webpage without reloading.
 #### What is DOM and how to manipulate it from Javascript?
-It stands for Document Object Model. With DOM, Js can access and change all the elements of the HTML content. Each branch is a node and these nodes contain objects. For example you can access and manipulate html element : document.getElementById("demo").innerHTML = "Hello World!";
+It stands for Document Object Model.When a web page is loaded, the browser creates a Document Object Model of the page. With DOM, Js can access and change all the elements of the HTML content. Each branch is a node and these nodes contain objects. For example you can access and manipulate html element : document.getElementById("demo").innerHTML = "Hello World!";
 #### What are events and how/why to use them in Javascript?
 HTML events are the 'things' that happen HTML elements.
-When JS is used HTML pages, JS can react on these events. User interacton e.g.: click, hover, keydown, etc. You can attach eventlisteners where you want to wair, and you can make a function on is
+When JS is used HTML pages, JS can react on these events. User interacton e.g.: click, hover, keydown, etc. You can attach eventlisteners where you want to wair, and you can make a function on it
 #### What is event bubbling/capturing? How would you use it?
 Event bubbling is when an aevent happens on an element, it first runs the handlers on it, then on its parent, then all the way up on the other ancestors.Use: <form onclick="alert('form')">FORM
                         <div onclick="alert('div')">DIV
-                            <p onclick="alert('p')">P</p>
+                            <p onclick="alert('p')">P<p>
                         </div>
                     </form>
 
@@ -457,7 +457,7 @@ click on the inner <p> first runs onclick: on that<p>, then on the outer <div>, 
 
 Event capturing is the event starts from top element to the target elements. It is the opposite of event bubbling, which starts from target element to the top element.
 #### What is JSON and how do we use it?
-JSON stands for JavaScript Object.It is a lightweight format for storing and transporting data. It is used when date is sent from a server to a webpage or reverse.
+JSON stands for JavaScript Object Notation.It is a lightweight format for storing and transporting data. It is used when date is sent from a server to a webpage or reverse.
 example : {
    "book": [
 	
@@ -497,6 +497,7 @@ You can also see who wrote specific changes to the code.
 git status: it shows what files have to be committed, and which while is added to the stage area.
 #### What does remote/local mean in Git? 
 Local is in your computer, remote is on the web.
+
 ### DevOps
 
 #### Why is it good to use a package manager software?
@@ -505,6 +506,7 @@ You don't have to google through everything.
 #### Why is it good to use a virtual environment for a project?
 It helps you to keep your code functional if something changes. For example a tool gets updated
 and suddenly your code crashes, but with virtual environment your versions can stay the same.
+
 ### Networks
 
 #### What kind of HTTP status codes do you know?
@@ -536,6 +538,11 @@ UDP performs error checking, but it discards erroneous packets.
 -TCP has acknowledgement segments, but UDP does not have any acknowledgement segment
 -TCP is heavy-weight and UDP is lightweight
 #### How does an HTTP Request look like? What are the most relevant HTTP header fields?
+HTTP requests are messages sent by the client to initiate an action on the server.
+http://developer.mozilla.org/en-US/docs/Web/HTTP/Messages HTTP/1.1) 1. An HTTP method, a verb (like GET, PUT or POST) or a noun (like HEAD or OPTIONS), that describes the action to be performed. 2. The request target, usually a URL, or the absolute path of the protocol, port, and domain are usually characterized by the request context. 3. The HTTP version, which defines the structure of the remaining message, acting as an indicator of the expected version to use for the response.
+HTTP headers from a request follow the same basic structure of an HTTP header: a case-insensitive string followed by a colon (':') and a value whose structure depends upon the header. The whole header, including the value, consist of one single line, which can be quite long. There are numerous request headers available. They can be divided in several groups: 1. General headers, like Via, apply to the message as a whole. 2. Request headers, like User-Agent, Accept-Type, modify the request by specifying it further (like Accept-Language), by giving context (like Referer), or by conditionally restricting it (like If-None). 3. Entity headers, like Content-Length which apply to the body of the request. Obviously, there is no such header transmitted if there is no body in the request.
+The final part of the request is its body. Not all requests have one: requests fetching resources, like GET, HEAD, DELETE, or OPTIONS, usually don't need one. Some requests send data to the server in order to update it: as often the case with POST requests (containing HTML form data). Bodies can be broadly divided into two categories: 1. Single-resource bodies, consisting of one single file, defined by the two headers: Content-Type and Content-Length. 2. Multiple-resource bodies, consisting of a multipart body, each containing a different bit of information. This is typically associated with HTML Forms.
+
 Headers:
 - host: domain
 - method: GET, POST, DELETE, etc
@@ -545,15 +552,14 @@ Headers:
 - content type: body's content type
 #### How does an HTTP Response look like? What are the most relevant HTTP header fields?
 Headers:
-
 - Content-type
 - Status code
-
 Body:
 - The site you receive
 #### What is DNS? How does it work?
-DNS stands for Domain Name System.
-DNS translates the domain name into an IP address to connect to the server. It kind of works like a phone book.
+The Domain Name System (DNS) is the phonebook of the Internet. Humans access information online through domain names,
+ like nytimes.com or espn.com. Web browsers interact through Internet Protocol (IP) addresses.
+  DNS translates domain names to IP addresses so browsers can load Internet resources
 
 #### What is a web server?
 A web server is used for hosting websites. It usually runs on a dedicated hardware which stores data about the web page.
@@ -569,7 +575,7 @@ I'd store login data with this. Is the user logged in or not.
 ## Software Development Methodologies
 
 #### What kind of software development methodologies do you know? What are the main features of these?
-Waterfall methodology:The waterfall model emphasizes that a logical progression of steps be taken throughout the software development life cycle (SDLC), much like the cascading steps down an incremental waterfall. While the popularity of the waterfall model has waned over recent years in favor of more agile methodologies, the logical nature of the sequential process used in the waterfall method cannot be denied, and it remains a common design process in the industry.
+Waterfall methodology:It is very simple to understand and use. In a waterfall model, each phase must be completed before the next phase can begin and there is no overlapping in the phases..
 
 Agile:It has a time boxed iterative approach to development. Analysis, design, etc.. are done contemporary.
 It builds the software in small blocks instead of delivering
@@ -580,21 +586,24 @@ needs to change during the development. Good for projects like a website.
 - Product owner (PO)
 - Scrum master
 - Developer team
+
 #### What are the SCRUM ceremonies?
 - Sprint planning
 - Daily stand ups
 - Sprint review
-- Retrospective meetin
+- Retrospective meeting
 
 #### What are the SCRUM artifacts?
 - Product backlog: never ending<br>
 - Sprint backlog: what the team thinks can be done in a sprint<br>
 - Increment: All completed backlogs from the current sprint combined with the previous sprint's backlog.<br>
 - Burn-Down Chart: An overview graph that can assume the team's and project's velocity. 
+
 #### What is the main goal of a retrospective meeting?
 A meeting that reflects the previous sprint. Discussing the positive and negative elements of the sprint.
 Making an action item, that can be implemented in the next sprint. It needs to be Specific, Measurable, Action-oriented,
-Realistic, ).
+Realistic, )
+
 #### Explain, when would you recommend to use the waterfall methodology?
 When the requirements are clean and you can't really fix the software afterwards.
 Most cars' system are designed this way. You can't really roll an update to the tempomat in a car.

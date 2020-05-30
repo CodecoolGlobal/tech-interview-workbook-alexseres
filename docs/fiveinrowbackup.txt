@@ -1,0 +1,159 @@
+package com.codecool.fiveinarow;
+
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class Game implements GameInterface {
+    private int player = 1;
+    private int[][] board;
+    private char[] abc = { 'A', 'B', 'C', 'D', 'E', 'F' };
+    private String abcde = "ABCDEFG";
+
+    public Game(int nRows, int nCols) {
+        setBoard(new int[nRows][nCols]);
+    }
+
+    public int[][] getBoard() {
+        return board;
+    }
+
+    public void setBoard(int[][] board) {
+        this.board = board;
+    }
+
+    public int[] getMove() {
+        int permission = 0;
+        if (player == 1){
+            player = 2;
+        } else if (player == 2){
+            player = 1;;
+        }
+        while (permission == 0) {
+            try {
+                Scanner scan = new Scanner(System.in);
+                System.out.println("Enter your coordinate: ");
+                String position = scan.next();
+                char firstChar = position.charAt(0);
+                int row = abcde.indexOf(firstChar);
+                String secondChar = position.substring(1, 2);
+                int column = Integer.parseInt(secondChar) -1;
+                System.out.println(row);
+                System.out.println(column);
+                if (board[row][column] == 0) {
+                    permission =1;
+                    mark(player,row,column);
+
+                }
+            }
+                catch (Exception e) {
+                System.out.println("Invalid coordinate");
+            }
+        }
+
+
+
+        return null;
+    }
+
+    public int[] getAiMove(int player) {
+
+        return null;
+    }
+
+    public void mark(int player, int row, int col) {
+        board[row][col] = player;
+
+    }
+
+    public boolean hasWon(int player, int howMany) {
+        return false;
+    }
+
+    public boolean isFull() {
+        return false;
+    }
+
+    public void printBoard() {
+        for (int cel_nums = 1; cel_nums<board[0].length +1;cel_nums++){
+            System.out.print("   " + cel_nums);
+        }
+        char[][] translated_board = new char[board.length][board[0].length];
+        for (int row=0; row<board.length;row++){
+            for (int cell=0;cell<board[0].length;cell++){
+                if (board[row][cell] == 0) {
+                    translated_board[row][cell] = '.';
+                } else if (board[row][cell] == 1) {
+                    translated_board[row][cell] = 'X';
+                } else if (board[row][cell] == 2) {
+                    translated_board[row][cell] = 'O'; //its a big O not a 0(zero)
+                }
+            }
+        }
+
+
+        for (int row=0; row<translated_board.length;row++){
+            System.out.println(" ");
+            System.out.print(abc[row] + "| ");
+            for (int col=0; col<board[0].length;col++) {
+
+                System.out.print(translated_board[row][col] + " | ");
+            }
+        }
+    }
+
+
+
+    public void printResult(int player) {
+    }
+
+    public void enableAi(int player) {
+    }
+
+    public void play(int howMany) {
+    }
+}
+
+
+
+/* DO NOT CHANGE THIS INTERFACE! It will be used to test your solution. */
+
+package com.codecool.fiveinarow;
+
+
+public interface GameInterface {
+    void setBoard(int[][] board);
+    int[][] getBoard();
+    int[] getMove();
+    int[] getAiMove(int player);
+    void mark(int player, int row, int col);
+    boolean hasWon(int player, int howMany);
+    boolean isFull();
+    void printBoard();
+    void printResult(int player);
+    void enableAi(int player);
+    void play(int howMany);
+}
+
+
+
+
+package com.codecool.fiveinarow;
+
+public class FiveInARow {
+
+    public static void main(String[] args) {
+
+        Game game = new Game(3, 8);
+        while (game.isFull() == false & game.hasWon(1,1) == false){
+            game.getBoard();
+            game.printBoard();
+            game.getMove();
+        }
+
+        game.enableAi(1);
+        game.enableAi(2);
+        game.play(5);
+    }
+}
+
+
