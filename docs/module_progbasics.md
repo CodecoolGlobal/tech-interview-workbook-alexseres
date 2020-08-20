@@ -6,8 +6,10 @@
 
 #### What is the purpose of a list (array in some programming languages) data structure? Name some methods of it!
 
-A list is a data structure in Python that is mutable, ordered sequence of elements. Each element or value inside if a list called an item. Use [] square brackets. List are great to use when you want to work with many related values. They enable you to keep data together, condense you code, and perform the same methods and operations on multiple values at once.
-methods : .sort(), .index(), .append(),
+List is a collection, A list is a data structure in Python that is mutable, ordered sequence of elements. Each element or value inside if a list called an item. Use [] square brackets. List are great to use when you want to work with many related values. They enable you to keep data together, condense you code, and perform the same methods and operations on multiple values at once.
+methods : there are certain operation you can do witn lists. These opearation include indexing, slicing, adding, multiplying, checking for membership, even in Python with there some useful built in functions e.g.: finding the length of a seguence or finding largest or smallest element of the list 
+
+
 
 #### What is the difference between a list/array and a set?
 
@@ -15,16 +17,38 @@ Sets unlike list, cannot have multiple occureences of the same element and it st
 
 #### What is the purpose and methods of a dictionary/map data structure?
 
-Use {} curly brackets to construct the dictionary and [] square brackets to index it. Seperate the key and value with colons with commas. 
-
+Dictionary in Python is an unordered collection of data values, used to store data values like a map, which unlike other Data Types that hold only single value as an element,
+ Dictionary holds key:value pair. Dictionary elements are accessed by the keys. Key value is provided in the dictionary to make it more optimized.
 A dictionary maps a set of objects(keys) to another set of objects(value). The keys are unique, so its not ordered, and mutable. Each key-value pair maps the key to its associated value.
+You can define a dictionary by enclosing a comma-separated list of key-value pairs in curly brackets. A colon seperarates eacg key from its associated value
 
-"A dictionary consists of a collection of key-value pairs. Each key-value pair maps the key to its associated value."
+
+
+
 ### Algorithms
 
 #### Fibonacci sequences. Write a method (or pseudo code), that generates the Fibonacci sequences.
 
+There for way to perform Fibonacci sequence.: Iterative, naiveRecursive, RecursiveMemoizaition, tailRecursive
  
+iterative
+def f(n):
+    a, b = 0, 1
+    for i in range(0, n):
+        a, b = b, a + b
+    return a
+
+recursiveMemoization:
+factorial_memo = {}
+def factorial(k):
+    if k < 2: return 1
+    if k not in factorial_memo:
+        factorial_memo[k] = k * factorial(k-1)
+    return factorial_memo[k
+
+
+
+recursive: 
 def Fibonacci(n): 
     if n<0: 
         print("Incorrect input") 
@@ -43,6 +67,8 @@ def maximum(lst):
     for num in lst:
         if maxi < num:
             maxi = num
+
+ 
 #### How do you find the average of values in a list/array if you can’t use any built-in functions?
 
 def average(lst):
