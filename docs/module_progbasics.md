@@ -105,30 +105,93 @@ def sort_list(lst):
 
 #### What is the call stack?
 
-A stack that stores details of the functions called by a program in sequence, so that each function can return on completion to the code that called it.A stack contains information about a function: name, parameter, execution.
+-The call stack is a dynamic Data structure maintained inside the computer's RAM by the operating system
+A stack that stores details of the functions called by a program in sequence, so that each function can return on 
+completion to the code that called it.A stack contains information about a function: name, parameter, execution.
 its purpose to control the way procedures and function call each oter and control the way they pass parameters to each other
-
+-sometimes it refered as machine stack, or execution stack or stack.
 
 #### What is “Stack overflow”?
-
-Where the amount of memory that the computer is allocated for the stach has run out, and it is in danger over spilling and going into other parts of the memory. Happens when recursive function hasnt got breaking point
+-Stack overflow is a runtime error that happens when a program runs out of memory in the call stack, 
+and it is in danger over spilling and going into other
+parts of the memory. Happens when recursive function hasnt got breaking point.
 
 #### What are the main parts of a function?
-header and body.
-header: Def statement, fuction name, parameters, colon. example: def func(parameter):
-body: the actions of the function.
+-A function is a group of related statments that perform a specific task. It helps break our program into smaller and modular chunks
+It consists a header and a body:
+    -Header:
+	-Keyword 'def' that makrs the start of the function header
+	-a function name to uniquely identify the function. 
+	-parameters(arguments) through which we pass values to a function. They are optional
+	-A colon':' to mark the end of the function header	
+    -Body:
+	-optional documentation string docstring to describe what the function does
+	-One or more pythin statemenrs that make up the function body
+	-an optional return statement to return a value from the function
+	
+
+
 
 ### Programming languages - Python  
 #### How do you use a dictionary in Python?
-Use {} curly brackets to construct the dictionary and [] square brackets to index it. Seperate the key and value with colons with commas. Keys have to be immutable type and unique.
-dictionary = {'first_key': my_value, 'second_key': second_value}
+
+-A dictionary is a collection which is unordered, changeable and indexed it consists
+a key and value pair
+-Each key is separated from its value by a colon(:), the items are separated by commas, and
+the whole thing is enclosed in curly braces.Keys are unique within the dictionary while values may not be
+The values of dictonary can be any type, but the keys must be of an immutable data type
+such as strings, numbers. You can perform task such as access items: -by referring to its key name
+	inside square prackets : x = thisdict["mode"]
+	or change values: thisdict["year"] = 2020
+	or even you can iterate though in a dict: for x in thisdict:
+						      print(x) 	  
+									
+
+
+
+
+
 #### What does it mean that an object is immutable in Python?
-It cannot be changed after it is created.
+-It means that after you create an object and assign some value to it, you cant modify that value.
 Some immutable objects for example: string, tuple, integer, float.
+
 #### What is conditional expression in Python?
+-Conditional expression are features in Python, which perform different actions depending whether
+a programmer-specified boolean condition evaluates to true or false. in Python conditional
+expressions consist and if or/ and else, or if else.  
+    example:
+	if condition:
+    	    x = true_value
+	else:
+	    x = false_value
+
+
+
 Conditional expressions are operators that evaluate smt based on a condition being True or False.
+
+
 #### What are different types of arguments in Python?
-deafult argument: func(a=2), keyword argument: func(a, b), variable-lenght argument: func(* for_lists, ** for_dictionaries).
+Default arguments:
+    Sometimes we may want to use parameters in a function to provide a value for them. Default 
+    arguments which assumes a default value if a value is not supplied as an argument while
+    calling a function.
+		deafult argument: func(a=2)
+
+Keyword arguments:
+    in function, the values passed through arguments are assigned to parameters in order by their position.
+    With k.a. we can use the name of the parameter irrespective of its position while calling the function
+    to supply the values. All the keyword arguments must match one of the arguments accepted by the function
+
+	    
+
+
+ keyword argument: func(a, b)
+
+
+
+, variable-lenght argument: func(* for_lists, ** for_dictionaries).
+
+
 #### What is variable shadowing? (context: variable scope)
 It happens when we newly declared variable has the same name on the inner scope as on the outer scope. The program runs correctly, but it can be confusing.
 #### What can happen if you try to delete/drop/add an item from a List, while you are iterating over it in Python?
