@@ -166,10 +166,6 @@ expressions consist and if or/ and else, or if else.
 	    x = false_value
 
 
-
-Conditional expressions are operators that evaluate smt based on a condition being True or False.
-
-
 #### What are different types of arguments in Python?
 Default arguments:
     Sometimes we may want to use parameters in a function to provide a value for them. Default 
@@ -180,22 +176,29 @@ Default arguments:
 Keyword arguments:
     in function, the values passed through arguments are assigned to parameters in order by their position.
     With k.a. we can use the name of the parameter irrespective of its position while calling the function
-    to supply the values. All the keyword arguments must match one of the arguments accepted by the function
+    to supply the values. All the keyword arguments must match one of the arguments accepted by the function 
+	keyword argument: func(a, b)
+	    print (a + " and " + b + " are friends")
 
-	    
-
-
- keyword argument: func(a, b)
-
-
-
-, variable-lenght argument: func(* for_lists, ** for_dictionaries).
+Variable-length arguments:
+    Sometimes you may need more arguments to process function then you mentioned in the definition
+    If we dont know in advance about the arguments needed in function, we can use v-l. a. also called
+    arbitrary a.. For the asterisj is placed before a parameter in function definition which 
+ 	variable-lenght argument: func(* for_lists, ** for_dictionaries).
 
 
 #### What is variable shadowing? (context: variable scope)
-It happens when we newly declared variable has the same name on the inner scope as on the outer scope. The program runs correctly, but it can be confusing.
+-It happens when we newly declared variable has the same name on the inner scope as on the outer scope. The program runs correctly,its a bad practice, it can be confusing.
+
+
+
 #### What can happen if you try to delete/drop/add an item from a List, while you are iterating over it in Python?
-If we delete/drop/add to a list while iterating over it the method might fail, because we changed the number of elements in the list. The loop will skip through some elements, because it doesn't know that an elements was deleted/added, and advances to the next element.
+If we delete/drop/add to a list while iterating over it the method might fail and we get a StopIteration or Runtime error, because we changed the number of elements in the list. 
+The loop will skip through some elements, because it doesn't know that an elements was deleted/added, and advances to the next element.
+-We can use list comprehension to avoid this problem by creating a new list variable or we can use slicing
+
+
+
 #### What is the "golden rule" of variable scoping in Python (context: LEGB)? What is the lifetime of variables?
 Scopes determine the accessibility of variables, and what kind of values they hold.
 
@@ -205,15 +208,19 @@ Variables have different lifetimes, depending on their definiton. For example a 
 
 Golden rules: A variable should be only accessible where we use that certain variable: Using as much local variables as we can, and using global variables as little as we can.
 
-#### If you need to access the iterator variable after a for loop, how would you do it in Python?§
-list = []
-for iterable in something:
-    list.append(iterable)
-print(list)
+
+
+
+#### If you need to access the iterator variable after a for loop, how would you do it in Python?§      // check with mentor
+ 
 
 I would create an empty list and I would append with the iterables into it. and You can access any iterable variable in that list.
+
+
 #### What type of elements can a list contain in Python?
 A list can contain stirngs, integers, floats, tuples, dictionaries, sets.
+
+
 #### What is slice operator in Python and how to use?
 
 Returns the part of string or list  from the n'th character to the m'th character. Creates a slice object representing the set of indices specified by range(start, stop, step).
@@ -226,22 +233,44 @@ step:integer a value which determines the increment between each index for
 + operator will add two lists together.
 * operator will multiply a list, only integers in list.
 - and / cannot be used.
+
 #### What is the purpose of the in and not in membership operators in Python?
-It returns True or False(boolen value) whether the value before the in/not in is in the string, list, dictionary so on.
+-Membership operators are operators used to validate the membership of a value
+It test for membershop in a seqquence such as strings, lists or tuples.
+	-'in' operator is used to check if value exists in a sequence or not. Evaluates to true if a variable
+	 in the specified sequence and false otherwise
+	-'not' operator- Evaluates to true if it does not finds a variable in the specified
+	sequence and false otherwise.
+
 #### What does the + operator mean when used with strings in Python?
-it will concatenate 2 string into one.
+-It will concatenate 2 string into one.
+string1 = 'one'
+string2 = 'two'
+string3 = string1+string2
+print(string3)
+	onetwo
+
 #### Explain f strings in Python?
-F-string are only available in Python 3. The f string is a string formatting program that lets us put variables into the string. We have to use f before the quotation mark and use curly brackets around the variables.
+F-string are only available in Python 3.It is a Literal String Interpolation, The f string is a string formatting program that lets us put variables into the string. We have to use f before the quotation 
+mark and use curly brackets around the variables. f-strings are faster than the two most commonly used string formatting mechanisms, which are % formatting and str.format().
 
 age = 17
 print(f"My sister {age} years old.")
 
 #### Name 4 iterable types in Python!
+An iterator is an object that contains a countable number of values. It can be iterated upon, meaning that you can
+traverse through all the values.
 
-strings, tuples, lists, dictionaries
+
+Iterable types: strings, tuples, lists, dictionaries
+
+
 #### What is the difference between list/set/dictionary comprehension and a generator expression in Python?
-
-The generator yields one item at a time and generate only when it is used. it hasnt got return statement and it saves the state of the function. List comprehensions reserve memory for a whole list, dicti, etc. Generators are memory efficients.
+-There is a lot of work in building an iterator in Python. We have to implement a class with __iter__() and __next__() method, keep track of internal states, and raise StopIteration when there are no values to be returned.
+This is both lengthy and counterintuitive. Generator comes to the rescue in such situations.
+Python generators are a simple way of creating iterators. All the work we mentioned above are automatically handled by generators in Python.
+-The generator yields one item at a time and generate only when it is used. it hasnt got return statement,instead it has a yield statement and it saves the state of the function.
+ List comprehensions reserve memory for a whole list, dicti, etc. Generators are memory efficients.
 
 #### Does the order of the function definitions matter in Python? Why?
 
@@ -269,6 +298,8 @@ name, surname, age, place = my_info
 #### What happens when you try to assign the result of a function which has no return statement to a variable in Python?
 
 the variable's value will be None-type
+
+
 ## Software engineering
 
 ### Debugging
@@ -283,7 +314,7 @@ linter = analyse source code to flag programming erros, bigs, and suspicious cod
 
 #### What does step over, step into and step out mean while using the debugger?
 
-Step over: an action to take in the debugger that will step over a give file. If the line contains a function, the function will be executed and the result returned without debugging each line.
+Step over: an action to take in the debugger that will step over a given  file. If the line contains a function, the function will be executed and the result returned without debugging each line.
 
 Step into: an action to take in the debugging. If the line doesnt contain a function it behaves the same as step over, but if it does the debugger will enter the called function and continue line. 
 
@@ -294,18 +325,37 @@ You can put the breakpoint on the line. The program will run until the breakpoin
 ### Version control
 
 #### What are the advantages of using a version control system?
-You can view the changes throughout a project, multiple people are able to work on the same code at the same time. You can read every commit and see what happend to the code. 
+-Automatic backups: If you accidentally delete some file (or part of a file) you can undel
+ete it. If you change something and want to undo it, the VCS can do so.
+-Sharing on multiple computers: VCSes are designed to help multiple people 
+collaboratively edit text files. This makes sharing between multiple computers (say your de
+sktop and laptop) particularly easy. You do not need to bother if you always copied the new
+est version; the VCS will do that for you. Even if you are offline and change files on 
+both computers, the VCS will merge the changes intelligently once you are online.
+-Version control and branching: Say you published some class notes as a pdf and
+ want to fix some typos in them while simultaneously working on the notes for next 
+year. No problem. And you only need to fix the typos once, the VCS will merge them to 
+the other versions.
 
 
 #### What is the difference between the working directory, the staging area and the repository in git?
-Working directory contains the files which are untracked by git. Git doesn't pay attention to these files until you add them to the staging area.
-In the staging area files are tracked, which means that git keeps track of the changes that has happened to that file.
+-The working directory is simply, your current local directory that you are working on. e.g 
+if you have master, dev and yourname-dev as your remote branches, if you checkout 
+from dev to yourname-dev, yourname-dev is now your working directory if you checkout from this (yourname-dev) working directory to ano
+ther say dev, dev is now your new working directory.
+-In the staging area files are tracked, A staging step in git allows you to continue 
+making changes to the working directory, and when you decide you wanna interact with version control, it allows you to record changes in small commits.
 Repository: Is a file location where you are hold all the file related to your project.
 #### What are remote repositories in git?
-Remote repositories are versions of a project in the cloud, e.g. GitHub.
+A remote in Git is a common repository that all team members use to exchange their changes. In most cases, such a remote repository is stored on a 
+code hosting service like GitHub or on an internal server.
 
 #### Why does a merge conflict occur?
-When two commits change the same line differently and the automatic merge can't resolve the issue.
+-Conflicts generally arise when two people have changed the same lines in a file, or if one 
+developer deleted a file while another developer was modifying it. In these cases, 
+Git cannot automatically determine what is correct. Conflicts only affect the developer
+ conducting the merge, the rest of the team is unaware of the conflict. 
+Git will mark the file as being conflicted and halt the merging process. It is then the developers' responsibility to resolve the conflict.
 #### Through what series of commands could you put a new file into a remote repository connected to your existing local repository?
 touch newfile
 git add newfile
@@ -317,6 +367,7 @@ Descriptive commit messages describe the commit with details.
 #### What’s the difference between git and GitHub?
 Git is a version controll software, that is used for tracking changes in the code.
 Github is an online server for hosting git repositories in the cloud.
+"Its like difference between porn and pornhub" -I had to write this down, sorry.
 
 ## Software design
 
@@ -325,6 +376,12 @@ Github is an online server for hosting git repositories in the cloud.
 #### What does clean code mean?
 
 It is a code which is easy to understand and easy to change. (DRY=dont repeat yourself)
+It is easy to understand the execution flow of the entire application
+It is easy to understand how the different objects collaborate with each other
+It is easy to understand the role and responsibility of each class
+It is easy to understand what each function does
+It is easy to understand what is the purpose of each expression and variable
+
 #### What steps do we usually do during a clean code refactoring?
 step of the clean code:
     name functions and variables well
@@ -335,22 +392,46 @@ step of the clean code:
 ### Error handling
 
 #### What is exception handling?
-When our code runs into a line that it couldn't run, instead of crashing, we handle the exception in a meaningful way.
-
+-An exception can be defined as an unusual condition in a program resulting in the interruption in the flow of program.
+Whenever an exception occurs, the program stops the execution and thus the further code is not exexuted, therefore an
+exception is the run-time errors that are unable to handle to Python script An exception is a Python object that represents
+an error
+-Python provides a way to handle the exception so that the code can be executed without interruption. If we do not
+handle the exception, the interpretes doesnt execute all the code that exists after the exception.
 #### What are the basics of exception handling in Python?
-We use try and except blocks. The try block catches the exception. If the try cathes an exception it jumps to the except block. We can raise exceptions as well.
+We use try and except blocks. The try block catches the exception. If the try cathes an exception it jumps to the except block. We can raise exceptions as well in the except block .
+
+# import module sys to get the type of exception
+import sys
+
+
+randomList = ['a', 0, 2]
+
+for entry in randomList:
+    try:
+        print("The entry is", entry)
+        r = 1/int(entry)
+        break
+    except:
+        print("Oops!", sys.exc_info()[0], "occurred.")
+        print("Next entry.")
+        print()
+print("The reciprocal of", entry, "is", r)
+
 
 #### In which case should we catch an exception? Why?
-
-if you have a suspecious code that may raise exception, you can defend your program by placing the suspecious code in a try block. afte you can put an except statement, followed by a block of code which handles the problem elegantly.
+-Exceptions should be used for a situation where a certain method or dunction could not execute normally.
+For example, when it encounters broken input or when a resource(e.g. a file) is unavailable. Use 
+exceptions to signal the caller that you faced an error which you are unwilling or unable to handle. The exception
+is then passed to the caller who has the chance to either handle the exception or pass it on.
 
 #### What can/should we do with an exception in the ‘except’ block?
-when you think that you have a code which can produce an error or to avoid your program to be crashed.
+Because in the except block were are able to handle the error, whereares in the try block we are able to test.
+
 #### What does the else and finally statement do in a try-except block in Python?
 
-the finally clause is always ececuted before the try statement whether the statement is true or false. 
-else is executed only if the statements in the try block doesnt raise an exception.
-
+-the finally block runs after the try..exceplt block regardless if an error was catched or not.
+-We should ise finally to make sure files or resources are closed or released regardless of whether an exception occurs, even if you dont catch the exception. 
 ## Software Development Methodologies
 
 #### What is the main goal of a retrospective meeting?
