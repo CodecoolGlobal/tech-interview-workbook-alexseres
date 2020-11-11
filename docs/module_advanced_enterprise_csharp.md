@@ -111,16 +111,62 @@
 #### Mention what is the endpoint in WCF and what are the three major points in WCF?
 #### Object Relational Mapping, Entity Framework
 #### What is an ORM? What are benefits, when to use?
-    ORM stands for Object Relational Mapper, you are able to define what the structure in your database should look like, using code. Additionaly you can use code for your queries as well. An ORM library is a completely ordinary library written in your language of choice that encapsulates the code needed to manipulate data, so u aint use SQL anymore. 
+    ORM stands for Object Relational Mapper,it helps you take advantage of the oop principles while you are managing relational database. You are able to define what the structure in your database should look like, using code. Additionaly you can use code for your queries as well. An ORM library is a completely ordinary library written in your language of choice that encapsulates the code needed to manipulate data, so u aint use SQL anymore. 
 
     Benefits:
         -DRY: you wirte your data model in only one place, and its easier to update , maintain and reuse the code
         -it forces u to write mvc code, which makes it cleaner
         -a lot of stuff is done automatically like database handling
-        -it lets you use OOP goodness like data inheritance without difficulties
-#### What is Entity Framework? What are the advantages, limitations?
+        -it lets you use OOP goodness like data inheritance without difficulties 
+    
+#### What is Entity Framework core? What are the advantages, limitations?
+    -Entity Framework core is a modern object-database mapper for .NET . It supports LINQ queries, change tracking, updates, and schema migrations. EF Core works with many databases, including SQL Database, Postresql, MySQL etc..
+    -EF core can serve as an object-relational mapper (O/RM) which:
+        -enables .NET developers to work with databses using .NET objects.
+        -Eliminates the need for most of the data-access code that typically needs to be written 
+
+    -limitations: 
+        -if there is any schema change in databse ef core will not work. You have to update schema in solution as well.
+
 #### What is lazy loading?
+    - Lazy loading is the process whereby an entity or collection of entities is automatically loaded from the database the first time that a property referring to the entity/entites. it also means delaying the loading of related data, until you specifically request for it. 
+
+    -In the following example, the 'Author' entity contains the collection of Books. The Context first loads the author entity data from the databse, and then it will load the collection of books when we access the Books navigational property:
+        using (var context = new BookStore())
+        {
+            var author = context.Authors
+                .FirstOrDefault();
+            
+            var books = author.Books;
+        }
+    when the above code is executed, it will result in 2 SQL queries. in the first query, it will fetch the first author from the database: 
+        SELECT TOP (1) 
+            [c].[AuthorId] AS [AuthorId], 
+            [c].[Name] AS [Name]
+            FROM [dbo].[Authors] AS [c]
+    when the navigational property Books in Author class is accessed, it will send the following query to fetch all the books related to that author.
+    SELECT 
+        [Extent1].[Id] AS [Id], 
+        [Extent1].[Title] AS [Title], 
+        [Extent1].[AuthorId] AS [AuthorId]
+        FROM [dbo].[Books] AS [Extent1]
+        WHERE [Extent1].[AuthorId] = @EntityKeyValue1
+
+        -- EntityKeyValue1: '1' (Type = Int32, IsNullable = false)        
+
 #### What is the difference between code first and DB first approach?
+    - in Code first approach we will first create entity classes with properties defined in it. Entity framework will create the database and tables based on the entity classes defined. So database is generated from the code. When the .net code runs, database will get created.
+
+    -The database first appriach created model codes (classes,properties, dbContext etc) from the database in the project and those classes become the link between the database and the controller.
+    it also creates the entity framework from an existing database. We use all other functionalities, such as the model/database sync and the code generation
 #### What is a migration script?
+    -In real world projects, data models change as features get implemented: new entities or properties are added and removed, and database schemas needs to be changed accordingly to be kept in sync with the application. The migrations feature in EF Core provides a way to incrementally update the database schema to keep it in sync with the application/s data model while preserving existing data in the datbase
+        - When a data model change is introduced, the developer uses EF Core tools to add a corresponding migration describing the updates necessary to keep the database schema in sync. EF core compares the current model against a snapshot of the old model to determine the differences, and generates migration source files; the files can be tracked in your projects source control like any other source file
+        -Once a new migration has been generated it can be applied to database various ways. EF Core records all applied migrations in a special history table, allowing it to know which migrations have been applied and which aint.
 #### What is a navigation property?
+    -Navigation properties provide a way to navigate an association between two entity types. Every object can have a navigation property for every relationship in which it participates. Navigation properties allow you to navigate and manage relationshops in both directions, returning either a reference object or a collection.
 #### Name 3 different attributes used in EF Core, what can they do for you?
+    -from Data Annotations attributes in ef core can be applied on an entity class or properties to override default conventions.
+        [Required] = can be applied to a property to specify that the corresponding column is a notnull column in the database
+        [Key] can be applied to a property to specify a key property in an entity and make the corresponding column a PrmiaryKey Column in the database
+        [MinLength] can be applied to a property to specify the minimum string length allowd in the corresponding column in the database. 
